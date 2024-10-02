@@ -1,5 +1,16 @@
+import { createReadStream } from 'node:fs';
+import { pipeline as pipe } from 'node:stream/promises';
+import path from 'node:path';
+
+const FILE_PATH = path.join('src', 'streams', 'files', 'fileToRead.txt');
+
 const read = async () => {
-    // Write your code here 
+  const stream = createReadStream(FILE_PATH, 'utf8');
+  try {
+    await pipe(stream, process.stdout);
+  } catch (err) {
+    console.error('An error occurred while reading the file:', err);
+  }
 };
 
 await read();

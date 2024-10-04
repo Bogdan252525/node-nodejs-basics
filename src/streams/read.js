@@ -5,7 +5,12 @@ import path from 'node:path';
 const FILE_PATH = path.join('src', 'streams', 'files', 'fileToRead.txt');
 
 const read = async () => {
-  const stream = createReadStream(FILE_PATH, 'utf8');
+  const stream = createReadStream(FILE_PATH, { encoding: 'utf8' });
+
+  stream.on('end', () => {
+    console.log('\n');
+  });
+
   try {
     await pipe(stream, process.stdout);
   } catch (err) {

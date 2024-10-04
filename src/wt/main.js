@@ -9,6 +9,8 @@ const performCalculations = async () => {
   return new Promise((resolve) => {
     const checkCompletion = () => {
       if (results.every((result) => result !== null)) {
+        console.log('Calculations are complete:', results);
+        workers.forEach((worker) => worker.terminate());
         resolve(results);
       }
     };
@@ -27,7 +29,8 @@ const performCalculations = async () => {
         checkCompletion();
       });
 
-      worker.on('error', () => {
+      worker.on('error', (error) => {
+        console.error(`Error in the worker ${i}:`, error);
         results[i] = {
           status: 'error',
           data: null,

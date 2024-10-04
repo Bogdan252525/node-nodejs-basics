@@ -5,6 +5,8 @@ import path from 'path';
 const PATH_TO_SCRIPT = path.join('src', 'cp', 'files', 'script.js');
 
 const spawnChildProcess = async (args) => {
+  console.log('To finish please press ctrl + D');
+
   if (!Array.isArray(args)) {
     args = [];
   }

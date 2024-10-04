@@ -7,7 +7,7 @@ const INPUT_PATH = path.join('src', 'zip', 'files', 'archive.gz');
 const OUTPUT_PATH = path.join('src', 'zip', 'files', 'fileToCompress.txt');
 
 const decompress = async () => {
-	const input = createReadStream(INPUT_PATH);
+  const input = createReadStream(INPUT_PATH);
   const output = createWriteStream(OUTPUT_PATH);
   const gunzip = createGunzip();
 

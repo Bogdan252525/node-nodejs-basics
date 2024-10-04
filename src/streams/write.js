@@ -5,6 +5,7 @@ const FILE_PATH = path.join('src', 'streams', 'files', 'fileToWrite.txt');
 
 const write = async () => {
   const stream = createWriteStream(FILE_PATH, 'utf8');
+  console.log('To finish please press ctrl + D');
 
   process.stdin.pipe(stream);
 
